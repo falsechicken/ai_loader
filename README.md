@@ -4,6 +4,6 @@ To use: Add the ai_loader plugin to your Riddim config then create the table bel
 
 -- Config Options --
 
-ai_plugins = { -- Table of ai_plugins to load.
-}
+ai_plugins = {} -- Table of ai_plugins to load.
+
 
