@@ -1,3 +1,8 @@
+--[[
+LogMan
+Used to print log messages in a standard way.
+--]]
+
 local logMan = {};
 
 function logMan.LogMessage(_message, _mode)

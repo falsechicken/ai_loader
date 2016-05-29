@@ -1,3 +1,8 @@
+--[[
+JIDTool
+Used for operations such as seperating usernames from full JIDs. Needs work.
+--]]
+
 local jid_tool = {};
 
 function jid_tool.SeperateFullJID(_fullJID)

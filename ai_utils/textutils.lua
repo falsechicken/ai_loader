@@ -1,6 +1,13 @@
+--[[
+TextUtils
+Utils for working with strings.
+--]]
+
 local textUtils = {}
 
--- Split input string into a table specifying seperator. Defaults to space.
+--[[
+ Split input string into a table specifying seperator. Defaults to space.
+--]]
 function textUtils.Split(_inputstr, _sep)
         if _inputstr == nil then
 			local t = {};
