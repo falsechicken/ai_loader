@@ -1,4 +1,10 @@
-local tableUtils = {}
+--[[
+TableUtils
+Utility functions for working with tables.
+--]]
+
+
+local tableUtils = {};
 
 --[[
 	Return a random entry from a table.

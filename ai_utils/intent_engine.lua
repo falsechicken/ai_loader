@@ -3,7 +3,7 @@ Ai Loader Intent Engine
 Decides if a set of text matches a plugin.
 --]]
 
-local intentEngine = {}
+local intentEngine = {};
 
 local textUtils = require("riddim/ai_utils/textutils");
 
