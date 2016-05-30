@@ -17,9 +17,9 @@ end
 
 function jid_tool.SeperateFullJIDChat(_fullJID)
 	
-	local fullJID, jid = _fullJID:match("([^,]+)/([^,]+)"); -- Split JID and Resource
+	local fullJID, jid = _fullJID:match("([^,]+)/([^,]+)"); -- Split JID and full JID.
 	
-	local room, host = fullJID:match("([^,]+)@([^,]+)");
+	local room, host = fullJID:match("([^,]+)@([^,]+)"); -- Split room and host.
 	
 	return jid, host, room;
 	
@@ -27,7 +27,7 @@ end
 
 function jid_tool.GetRoomFromChatJID(_chatJID)
 	
-	local room, jid = _chatJID:match("([^,]+)/([^,]+)"); -- Split JID and Resource
+	local room, jid = _chatJID:match("([^,]+)/([^,]+)"); -- Split Room and JID
 	
 	return room;
 	

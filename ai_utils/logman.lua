@@ -11,7 +11,7 @@ function logMan.LogMessage(_message, _mode)
 	if _mode == 1 then print(now.. " INFO: ".._message); return; end
 	if _mode == 2 then print(now.. " WARNING: ".._message); return; end
 	if _mode == 3 then print(now.. " ERROR: ".._message); return; end
-	print("LogMan: Invalid mode.");
+	print("LogMan: Invalid mode (".._mode..")");
 end
 
 return logMan;
