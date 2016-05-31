@@ -29,4 +29,34 @@ function tableUtils.GetTableSize(_table)
 	return count; 
 end
 
+--[[
+	Returns true if the given table contains the given entry.
+--]]
+function tableUtils.DoesTableContainEntry(_entry, _table)
+	for k, v in pairs(_table) do
+		if v == _entry then
+			return true;
+		end
+	end
+	
+	return false;
+end
+
+--[[
+	Recursively print a table to the console.
+--]]
+function tableUtils.PrintTable (_table, _indent)
+  if not _indent then indent = 0 end
+  
+  for k, v in pairs(_table) do
+    formatting = string.rep("  ", _indent) .. k .. ": "
+    if type(v) == "table" then
+      print(formatting)
+      tableUtils.PrintTable(v, _indent+1)
+    else
+      print(formatting .. v);
+    end
+  end
+end
+
 return tableUtils;
