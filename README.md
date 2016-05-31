@@ -10,4 +10,5 @@ nick = ""; -- Name of the bot.
 
 ai_plugins = {}; -- Table of ai_plugins to load.
 
+admins = {}; -- Table of JIDs of users who are allowed to administer admin commands.
 

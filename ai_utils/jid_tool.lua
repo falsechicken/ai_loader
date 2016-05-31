@@ -33,4 +33,10 @@ function jid_tool.GetRoomFromChatJID(_chatJID)
 	
 end
 
+function jid_tool.StripResourceFromJID(_jid)
+	local fullJID, resource = _jid:match("([^,]+)/([^,]+)"); -- Split JID and Resource
+	
+	return fullJID;
+end
+
 return jid_tool;

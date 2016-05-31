@@ -54,7 +54,7 @@ function HandleMessage(_message)
 	status = status.."\n".."Riddim Plugins: ";
 	
 	for position, pluginName in pairs(BOT.config.plugins) do
-		status = status..pluginName.." ";
+		status = status..pluginName.." | ";
 	end
 	
 	status = status.."\n";
@@ -62,7 +62,7 @@ function HandleMessage(_message)
 	status = status.."\n".."Verse/Stream Plugins: ";
 	
 	for position, versePluginName in pairs(BOT.config.stream_plugins) do
-		status = status..versePluginName.." ";
+		status = status..versePluginName.." | ";
 	end
 	
 	status = status.."\n";
@@ -70,7 +70,7 @@ function HandleMessage(_message)
 	status = status.."\n".."AI Plugins: ";
 	
 	for position, aiPluginName in pairs(BOT.config.ai_plugins) do
-		status = status..aiPluginName.." ";
+		status = status..aiPluginName.." | ";
 	end
 	
 	status = status.."\n";
@@ -81,12 +81,13 @@ function HandleMessage(_message)
 	status = status.."\n"..result;
 	
 	handle = io.popen("free -mh");
-    result = handle:read("*a");
+	result = handle:read("*a");
 	
 	status = status.."\n"..result;
 	
 	_message:reply(status);
-		return true;
+	
+	return true;
 end
 
 return ai_status;
