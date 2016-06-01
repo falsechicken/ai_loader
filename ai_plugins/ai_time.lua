@@ -11,6 +11,8 @@ local timeKeywords = {
 
 local questionKeywords = {
 	"what",
+	"whats",
+	"what\'s"
 }
 
 function ai_time.Init(_bot, _botName)
@@ -25,7 +27,7 @@ function ai_time.Init(_bot, _botName)
 end
 
 function HandleMessage(_message)
-		_message:reply(os.date("[ %x  :  %X ]"));
+		_message:reply("It is "..os.date("%X").. " on "..os.date("%x"));
 		return true;
 end
 
