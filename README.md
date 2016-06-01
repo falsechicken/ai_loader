@@ -10,8 +10,6 @@ nick = ""; -- Name of the bot.
 
 ai_plugins = {}; -- Table of ai_plugins to load.
 
-admins = {}; -- Table of JIDs of users who are allowed to administer admin commands.
-
 -- Table of user permissions used by plug-ins. Example:
 permissions = {
   ["user1@example.org"] = {"permission1", "permission2"},
