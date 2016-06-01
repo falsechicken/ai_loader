@@ -30,11 +30,24 @@ function tableUtils.GetTableSize(_table)
 end
 
 --[[
-	Returns true if the given table contains the given entry.
+	Returns true if the given table contains the given key.
 --]]
-function tableUtils.DoesTableContainEntry(_entry, _table)
+function tableUtils.DoesTableContainKey(_key, _table)
 	for k, v in pairs(_table) do
-		if v == _entry then
+		if k == _key then
+			return true;
+		end
+	end
+	
+	return false;
+end
+
+--[[
+	Returns true if the given table contains the given value.
+--]]
+function tableUtils.DoesTableContainValue(_value, _table)
+	for k, v in pairs(_table) do
+		if v == _value then
 			return true;
 		end
 	end
