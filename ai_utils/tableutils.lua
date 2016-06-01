@@ -44,23 +44,25 @@ end
 
 --[[
 	Recursively print a table to the console.
+	Uses code from https://gist.github.com/stuby/5445834#file-rprint-lua
 --]]
-function tableUtils.PrintTable (_table, _indent)
-	if not _indent then _indent = 0 end
-  
-		for k, v in pairs(_table) do
-			formatting = string.rep("  ", _indent) .. k .. ": ";
-			if type(v) == "table" then
-				print(formatting);
-				tableUtils.PrintTable(v, _indent+1);
-			else
-				if type(v) ~= "function" then
-					print(formatting .. v);
-				else
-					print(formatting .. "<FUNCTION>");
-				end
-			end
-		end
+function tableUtils.PrintTable(_table, _limit, _indent) -- recursive Print (structure, limit, indent)
+	_limit = (_limit) or 100; _indent = _indent or "";	-- default item limit, indent string
+	
+	if (_limit<1) then print "ERROR: Item limit reached."; return _limit-1; end
+	
+	local ts = type(_table);
+	
+	if (ts ~= "table") then print (_indent,ts,_table); return _limit-1; end
+	
+	print (_indent,ts);           -- print "table"
+	
+	for k,v in pairs(_table) do  -- print "[KEY] VALUE"
+		_limit = tableUtils.PrintTable(v, _limit, _indent.."\t["..tostring(k).."]");
+		if (_limit < 0) then break; end
 	end
+	
+	return _limit
+end	
 
 return tableUtils;
