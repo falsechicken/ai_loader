@@ -5,6 +5,9 @@ Used for operations such as seperating usernames from full JIDs. Needs work.
 
 local jid_tool = {};
 
+--[[
+	Seperates the username, host, and resource from a full JID and returns the results.
+--]]
 function jid_tool.SeperateFullJID(_fullJID)
 	
 	local fullJID, resource = _fullJID:match("([^,]+)/([^,]+)"); -- Split JID and Resource
