@@ -30,11 +30,24 @@ function tableUtils.GetTableSize(_table)
 end
 
 --[[
-	Returns true if the given table contains the given entry.
+	Returns true if the given table contains the given key.
 --]]
-function tableUtils.DoesTableContainEntry(_entry, _table)
+function tableUtils.DoesTableContainKey(_key, _table)
 	for k, v in pairs(_table) do
-		if v == _entry then
+		if k == _key then
+			return true;
+		end
+	end
+	
+	return false;
+end
+
+--[[
+	Returns true if the given table contains the given value.
+--]]
+function tableUtils.DoesTableContainValue(_value, _table)
+	for k, v in pairs(_table) do
+		if v == _value then
 			return true;
 		end
 	end
@@ -44,19 +57,25 @@ end
 
 --[[
 	Recursively print a table to the console.
+	Uses code from https://gist.github.com/stuby/5445834#file-rprint-lua
 --]]
-function tableUtils.PrintTable (_table, _indent)
-  if not _indent then indent = 0 end
-  
-  for k, v in pairs(_table) do
-    formatting = string.rep("  ", _indent) .. k .. ": "
-    if type(v) == "table" then
-      print(formatting)
-      tableUtils.PrintTable(v, _indent+1)
-    else
-      print(formatting .. v);
-    end
-  end
-end
+function tableUtils.PrintTable(_table, _limit, _indent) -- recursive Print (structure, limit, indent)
+	_limit = (_limit) or 100; _indent = _indent or "";	-- default item limit, indent string
+	
+	if (_limit<1) then print "ERROR: Item limit reached."; return _limit-1; end
+	
+	local ts = type(_table);
+	
+	if (ts ~= "table") then print (_indent,ts,_table); return _limit-1; end
+	
+	print (_indent,ts);           -- print "table"
+	
+	for k,v in pairs(_table) do  -- print "[KEY] VALUE"
+		_limit = tableUtils.PrintTable(v, _limit, _indent.."\t["..tostring(k).."]");
+		if (_limit < 0) then break; end
+	end
+	
+	return _limit
+end	
 
 return tableUtils;
