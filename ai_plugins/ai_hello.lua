@@ -26,8 +26,8 @@ function ai_hello.Init(_bot, _botName)
 
 	local subTable = {};
 	
-	table.insert(subTable, { { { _botName }, greetingKeywords }, HandleMessage });
-	table.insert(subTable, { { greetingKeywords , { _botName } }, HandleMessage });
+	table.insert(subTable, { { { _botName, _botName.."!" }, greetingKeywords }, HandleMessage });
+	table.insert(subTable, { { greetingKeywords , { _botName, _botName.."!", _botName.."?" } }, HandleMessage });
 	
 	return subTable;
 	
