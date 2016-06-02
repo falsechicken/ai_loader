@@ -21,7 +21,8 @@ local actionKeywords = {
 	"show",
 	"display",
 	"lookup",
-	"get"
+	"get",
+	"give"
 };
 
 local nounKeywords = {
@@ -29,7 +30,9 @@ local nounKeywords = {
 	"him",
 	"her",
 	"them",
-	"the"
+	"the",
+	"man",
+	"woman"
 };
 
 local successResponses = {
