@@ -36,6 +36,7 @@ function ai_status.Init(_bot, _botName)
 	
 	table.insert(subTable, { { questionKeywords, statusKeywords, { _botName, _botName.."?" } }, HandleMessage });
 	table.insert(subTable, { { { _botName }, questionKeywords, statusKeywords }, HandleMessage });
+	
 	table.insert(subTable, { { questionKeywords, subjectKeywords, statusKeywords, { _botName, _botName.."?" } }, HandleMessage });
 	table.insert(subTable, { { { _botName }, questionKeywords, subjectKeywords, statusKeywords }, HandleMessage });
 	
@@ -44,18 +45,9 @@ function ai_status.Init(_bot, _botName)
 end
 
 function HandleMessage(_message)
-	
-	if _message.stanza.attr.type == "groupchat" then
-		if permissions.HasPermission(_message.sender["jid"], "ai_status", BOT.config.permissions) == false then
-			_message:reply("You are not authorized to see my status...");
-			return false;
-		end
-	else
-		if permissions.HasPermission(jid_tool.StripResourceFromJID(_message.sender["jid"]), "ai_status", BOT.config.permissions) == false then
-			_message:reply("You are not authorized to see my status...");
-			return false;
-		end
-	end
+		
+	if CheckPermissions(_message) == false then 
+		_message:reply("You are not authorized to see my status..."); return false; end
 	
 	local status = "\n";
 	
@@ -96,6 +88,20 @@ function HandleMessage(_message)
 	_message:reply(status);
 	
 	return true;
+end
+
+function CheckPermissions(_message)
+	if _message.stanza.attr.type == "groupchat" then
+		if permissions.HasPermission(_message.sender["jid"], "ai_status", BOT.config.permissions) == false then
+			return false;
+		end
+		return true;
+	else
+		if permissions.HasPermission(jid_tool.StripResourceFromJID(_message.sender["jid"]), "ai_status", BOT.config.permissions) == false then
+			return false;
+		end
+		return true;
+	end
 end
 
 return ai_status;
