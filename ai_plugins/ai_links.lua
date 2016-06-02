@@ -32,11 +32,18 @@ local nounKeywords = {
 	"the"
 };
 
-local responses = {
+local successResponses = {
 	"Got It",
 	"Here ya go",
 	"Right here bro",
 	"Roger that"
+};
+
+local failResponses = {
+	"I do not know what link you want?... Sorry.",
+	"Uhm... I am unaware of that link... My bad.",
+	"Am I supposed to know where that is?",
+	"This is the first I am hearing of this link..."
 };
 
 function ai_links.Init(_bot, _botName)
@@ -61,14 +68,14 @@ function HandleMessage(_message)
 	for k, word in pairs(words) do
 		for title, link in pairs(BOT.config.ai_links) do
 			if word == title then
-				_message:reply(tableUtils.GetRandomEntry(responses)..": "..link);
+				_message:reply(tableUtils.GetRandomEntry(successResponses)..": "..link);
 				return true;
 			end
 		end
 	end
 	
-	_message:reply("I do not know what link you want? Sorry.");
-	return true;
+	_message:reply(tableUtils.GetRandomEntry(failResponses));
+	return false;
 end
 
 return ai_links;
