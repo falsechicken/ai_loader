@@ -1,6 +1,6 @@
 AI plugin loader/framework for Riddim bots.
 
-To use: Add the ai_loader plugin to your Riddim config then create/edit the options below in said config with a list of plugins to load.
+To use: Add the ai_loader plug-in to your Riddim config then create/edit the options below in said config with a list of plug-ins to load.
 
 Only tested with Ubuntu Linux.
 

@@ -29,6 +29,8 @@ local thankResponses = {
 	"You know I got you.",
 	"You got it.",
 	"Np",
+	"De nada",
+	"Bitte"
 }
 
 function ai_thank.Init(_bot, _botName)
