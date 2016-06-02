@@ -22,17 +22,24 @@ local actionKeywords = {
 	"display",
 	"lookup",
 	"get",
-	"give"
+	"give",
+	"hook"
 };
 
 local nounKeywords = {
 	"me",
+	"i",
 	"him",
 	"her",
 	"them",
 	"the",
 	"man",
 	"woman"
+};
+
+local linkKeywords = {
+	"link",
+	"url"
 };
 
 local successResponses = {
@@ -53,8 +60,11 @@ function ai_links.Init(_bot, _botName)
 
 	local subTable = {};
 	
-	table.insert(subTable, { { { _botName }, actionKeywords, nounKeywords }, HandleMessage });
-	table.insert(subTable, { { actionKeywords, nounKeywords, { _botName, _botName.."?" } }, HandleMessage });
+	table.insert(subTable, { { { _botName }, actionKeywords, nounKeywords, linkKeywords }, HandleMessage });
+	table.insert(subTable, { { { _botName }, linkKeywords, actionKeywords, nounKeywords, }, HandleMessage });
+	
+	table.insert(subTable, { { actionKeywords, nounKeywords, linkKeywords, { _botName, _botName.."?" } }, HandleMessage });
+	table.insert(subTable, { { linkKeywords, actionKeywords, nounKeywords, { _botName, _botName.."?" } }, HandleMessage });
 	
 	BOT = _bot;
 	
