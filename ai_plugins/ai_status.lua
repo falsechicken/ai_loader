@@ -57,14 +57,7 @@ function HandleMessage(_message)
 		end
 	end
 	
-	local status = "";
-	
-	local handle = io.popen("git log --pretty=format:'%h' -n 1");
-	local result = handle:read("*a");
-	
-	status = status.."\n".."Version: "..result;
-	
-	status = status.."\n";
+	local status = "\n";
 	
 	status = status.."\n".."Riddim Plugins: ";
 	
