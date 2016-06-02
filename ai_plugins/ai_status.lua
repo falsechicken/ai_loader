@@ -4,7 +4,9 @@ Prints the git version and various other system stats.
 
 local ai_status = {};
 
-local tableUtil = require("riddim/ai_utils/tableutils");
+local permissions = require("riddim/ai_utils/permissions");
+local jid_tool = require("riddim/ai_utils/jid_tool");
+local tableUtils = require("riddim/ai_utils/tableutils");
 
 local BOT;
 
@@ -42,6 +44,19 @@ function ai_status.Init(_bot, _botName)
 end
 
 function HandleMessage(_message)
+	
+	if _message.stanza.attr.type == "groupchat" then
+		if permissions.HasPermission(_message.sender["jid"], "ai_status", BOT.config.permissions) == false then
+			_message:reply("You are not authorized to see my status...");
+			return false;
+		end
+	else
+		if permissions.HasPermission(jid_tool.StripResourceFromJID(_message.sender["jid"]), "ai_status", BOT.config.permissions) == false then
+			_message:reply("You are not authorized to see my status...");
+			return false;
+		end
+	end
+	
 	local status = "";
 	
 	local handle = io.popen("git log --pretty=format:'%h' -n 1");

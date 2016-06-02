@@ -20,6 +20,9 @@ local greetingResponses = {
 	"Hey.",
 	"Hello.",
 	"Yo yo.",
+	"What\'s good?",
+	"Hey. How\'s it hangin'?",
+	
 }
 
 function ai_hello.Init(_bot, _botName)
