@@ -24,7 +24,9 @@ local actionKeywords = {
 	"get",
 	"give",
 	"hook",
-	"find"
+	"find",
+	"grab",
+	"pull"
 };
 
 local nounKeywords = {
@@ -33,9 +35,11 @@ local nounKeywords = {
 	"him",
 	"her",
 	"them",
-	"the",
 	"man",
-	"woman"
+	"guy",
+	"woman",
+	"gal",
+	"dude"
 };
 
 local desireKeywords = {
@@ -45,21 +49,24 @@ local desireKeywords = {
 
 local linkKeywords = {
 	"link",
-	"url"
+	"url",
+	"video"
 };
 
 local successResponses = {
 	"Got It",
 	"Here ya go",
 	"Right here bro",
-	"Roger that"
+	"Roger that",
+	"Here it is",
+	"Here to serve"
 };
 
 local failResponses = {
 	"I do not know what link you want?... Sorry.",
 	"Uhm... I am unaware of that link... My bad.",
 	"Am I supposed to know where that is?",
-	"This is the first I am hearing of this link..."
+	"This is the first I am hearing of this..."
 };
 
 function ai_links.Init(_bot, _botName)
