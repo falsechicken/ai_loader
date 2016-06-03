@@ -13,9 +13,9 @@ Only tested with Ubuntu Linux.
 2. Follow the tutorial here to get the basic bot up and running: http://www.thiessen.im/2010/10/riddim-a-neat-little-xmpp-bot-written-in-lua/
     - Before squishing verse modify the verse/squishy file to include the following utils from Prosody:
 
-    `Module "util.datamanager" "util/datamanager.lua"`
-    `Module "util.envload" "util/envload.lua"`
-    `Module "util.serialization" "util/serialization.lua"`
+    `Module "util.datamanager" "util/datamanager.lua"`  
+    `Module "util.envload" "util/envload.lua"`  
+    `Module "util.serialization" "util/serialization.lua"`  
 
 3. Copy the ai_loader folders to your riddim folder.
     
