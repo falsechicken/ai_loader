@@ -29,8 +29,8 @@ Only tested with Ubuntu Linux.
 
 `ai_plugins = {}; -- Table of ai_plugins to load.`
 
-`-- Table of user permissions used by plug-ins. Example:  
-permissions = {  
-  ["user1@example.org"] = {"permission1", "permission2"},   
-  ["user2@example2.org"] = {"permission3", "permission4", "permission5"}  
-};`  
+`-- Table of user permissions used by plug-ins. Example:  `
+`permissions = {  `
+`  ["user1@example.org"] = {"permission1", "permission2"},   `
+`  ["user2@example2.org"] = {"permission3", "permission4", "permission5"}`  
+`};`  
