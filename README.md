@@ -34,3 +34,6 @@ Only tested with Ubuntu Linux.
 `  ["user1@example.org"] = {"permission1", "permission2"},   `
 `  ["user2@example2.org"] = {"permission3", "permission4", "permission5"}`  
 `};`  
+
+### -- Plug-in Development --
+There is a simple example plug-in in the ai_plugins folder.
