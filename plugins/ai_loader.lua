@@ -3,6 +3,7 @@
 local logMan = require("riddim/ai_utils/logman");
 local intentEngine = require("riddim/ai_utils/intent_engine");
 local tableUtil = require("riddim/ai_utils/tableutils");
+local stanzaUtils = require("riddim/ai_utils/stanzautils");
 
 local BOT;
 local botName;
@@ -58,6 +59,9 @@ function LoadPlugins()
 end
 
 function ai_loader_ProcessMessage(_message)
+	
+	if stanzaUtils.IsMessageOld(_message) then return; end -- Avoid processing old messages (Sent while bot is offline).
+	
 	if _message.body == nil or bLoaded == false then return; end
 
 	local matchingPluginSignatures = GetMatchingSignatures(_message);
@@ -67,6 +71,7 @@ function ai_loader_ProcessMessage(_message)
 	local mostLikelySig = CalculateMostLikelySignature(matchingPluginSignatures);
 	
 	return GetPluginSignatureFunction(mostLikelySig[1][1], mostLikelySig[1][2])(_message); -- Call proper plugin function and allow plugin to choose return value;
+	
 end
 
 function GetMatchingSignatures(_message)

@@ -6,7 +6,7 @@ Also requires the weather-util package to be installed.
 
 local ai_weather = {};
 
-local tableUtil = require("riddim/ai_utils/tableutils");
+local tableUtils = require("riddim/ai_utils/tableutils");
 
 local BOT;
 
@@ -45,12 +45,12 @@ end
 
 function HandleWeatherMessage(_message)
 	if _message.stanza.attr.type == "groupchat" then return; end
-	
+		
 	if BOT.config.ai_weather_location ~= nil then
 		local handle = io.popen("weather-util "..BOT.config.ai_weather_location);
 		local result = "\n"..handle:read("*a");
 
-		_message:reply(tableUtil.GetRandomEntry(successResponses).."\n"..result);
+		_message:reply(tableUtils.GetRandomEntry(successResponses).."\n"..result);
 		return true;
 	else
 		_message:reply("I don't know where you are man...");
@@ -65,7 +65,7 @@ function HandleForecastMessage(_message)
 		local handle = io.popen("weather-util -f "..BOT.config.ai_weather_location);
 		local result = "\n"..handle:read("*a");
 	
-		_message:reply(tableUtil.GetRandomEntry(successResponses).."\n"..result);
+		_message:reply(tableUtils.GetRandomEntry(successResponses).."\n"..result);
 		return true;
 	else
 		_message:reply("I don't know where you are man...");
