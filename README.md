@@ -8,7 +8,7 @@ Only tested with Ubuntu Linux.
 
 -- Installation Instructions --
 
-1. Install the proper packages (Ubuntu): sudo apt-get install lua5.1 lua-expat lua-filesystem lua-bitop lua-sec lua-zlib
+1. Install the proper packages (Ubuntu): `sudo apt-get install lua5.1 lua-expat lua-filesystem lua-bitop lua-sec lua-zlib mercurial`
 
 2. Follow the tutorial here to get the basic bot up and running: http://www.thiessen.im/2010/10/riddim-a-neat-little-xmpp-bot-written-in-lua/
     - Before squishing verse modify the verse/squishy file to include the following utils from Prosody:
