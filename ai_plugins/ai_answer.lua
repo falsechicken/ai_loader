@@ -9,6 +9,7 @@ local tableUtil = require("riddim/ai_utils/tableutils");
 local subjectKeywords = {
 	"you",
 	"your",
+	"ya"
 }
 
 local questionKeywords = {
@@ -16,21 +17,24 @@ local questionKeywords = {
 	"whats",
 	"what\'s",
 	"do",
-	"have",
+	"have"
 }
 
 local opinionKeywords = {
 	"think",
 	"think,",
 	"think?",
+	"thoughts",
+	"thoughts?",
 	"opinion",
 	"opinion,",
-	"opinion?",
+	"opinion?"
 }
 
 local yesRepsponses = {
 	"Yes.",
 	"Yeah.",
+	"Ja",
 	"I like it.",
 	"I\'m down.",
 }
@@ -38,8 +42,9 @@ local yesRepsponses = {
 local noRepsponses = {
 	"No.",
 	"Nope.",
+	"Nah.",
 	"I don't like it.",
-	"I\'m out.",
+	"I\'m out."
 }
 
 function ai_answer.Init(_bot, _botName)

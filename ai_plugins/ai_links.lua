@@ -26,7 +26,9 @@ local actionKeywords = {
 	"hook",
 	"find",
 	"grab",
-	"pull"
+	"pull",
+	"fetch",
+	"pass"
 };
 
 local nounKeywords = {
@@ -73,15 +75,15 @@ function ai_links.Init(_bot, _botName)
 
 	local subTable = {};
 	
-	table.insert(subTable, { { { _botName }, actionKeywords, nounKeywords, linkKeywords }, HandleMessage });
-	table.insert(subTable, { { { _botName }, linkKeywords, actionKeywords, nounKeywords, }, HandleMessage });
+	table.insert(subTable, { { { _botName, _botName.."." }, actionKeywords, nounKeywords, linkKeywords }, HandleMessage });
+	table.insert(subTable, { { { _botName, _botName.."." }, linkKeywords, actionKeywords, nounKeywords, }, HandleMessage });
 	
-	table.insert(subTable, { { actionKeywords, nounKeywords, linkKeywords, { _botName, _botName.."?" } }, HandleMessage });
-	table.insert(subTable, { { linkKeywords, actionKeywords, nounKeywords, { _botName, _botName.."?" } }, HandleMessage });
+	table.insert(subTable, { { actionKeywords, nounKeywords, linkKeywords, { _botName, _botName.."?", _botName.."." } }, HandleMessage });
+	table.insert(subTable, { { linkKeywords, actionKeywords, nounKeywords, { _botName, _botName.."?", _botName.."." } }, HandleMessage });
 	
-	table.insert(subTable, { { { _botName }, nounKeywords, desireKeywords, linkKeywords }, HandleMessage });
+	table.insert(subTable, { { { _botName, _botName.."." }, nounKeywords, desireKeywords, linkKeywords }, HandleMessage });
 	
-	table.insert(subTable, { { nounKeywords, desireKeywords, linkKeywords, { _botName, _botName.."?" } }, HandleMessage });
+	table.insert(subTable, { { nounKeywords, desireKeywords, linkKeywords, { _botName, _botName.."?", _botName.."." } }, HandleMessage });
 	
 	BOT = _bot;
 	
@@ -91,7 +93,7 @@ end
 
 function HandleMessage(_message)
 		
-	if BOT.config.ai_links == nil then _message:reply("No links are configured... Sorry."); return false; end
+	if BOT.config.ai_links == nil then _message:reply(tableUtils.GetRandomEntry(failResponses)); return false; end
 	
 	local words = textUtils.Split(_message.body);
 		
