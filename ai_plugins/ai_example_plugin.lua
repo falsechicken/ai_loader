@@ -17,7 +17,7 @@ function ai_example_plugin.Init(_bot, _botName)
 	botName = _botName; -- Assign the bot's name variable to the reference passed in from the loader.
 	
 	--[[
-		Setup the Subscription table. Used when the loader/intent engine scan messages and pass them on to the
+		Setup the Subscription table. Used when the loader/intent engine scans messages and pass them on to the
 		proper plug-in. The system works by breaking up the message into a list of words (Word meaning anything
 		seperated by spaces) and checking if those words appear in the order reflected by the subscription table
 		entry.
