@@ -12,10 +12,12 @@ local BOT;
 
 local weatherKeywords = {
 	"weather",
+	"weather?"
 }
 
 local forecastKeywords = {
 	"forecast",
+	"forecast?"
 }
 
 local successResponses = {
