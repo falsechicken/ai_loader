@@ -6,7 +6,7 @@ To use: Add the ai_loader plug-in to your Riddim config then create/edit the opt
 
 Only tested with Ubuntu Linux.
 
--- Installation Instructions --
+### -- Installation Instructions --
 
 1. Install the proper packages (Ubuntu): `sudo apt-get install lua5.1 lua-expat lua-filesystem lua-bitop lua-sec lua-zlib mercurial`
 
