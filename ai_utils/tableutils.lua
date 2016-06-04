@@ -34,11 +34,10 @@ end
 --]]
 function tableUtils.DoesTableContainKey(_key, _table)
 	for k, v in pairs(_table) do
-		if k == _key then
+		if tostring(k) == tostring(_key) then -- Avoid trying to test a number against a string.
 			return true;
 		end
 	end
-	
 	return false;
 end
 
