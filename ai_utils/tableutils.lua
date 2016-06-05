@@ -21,6 +21,30 @@ function tableUtils.GetRandomEntry(_table)
 end
 
 --[[
+	Return a random key from a table. Currently it will return all entries as strings.
+--]]
+function tableUtils.GetRandomKey(_table)
+	local rand;
+	local count = 0;
+	local stringTable = {};
+	
+	for _ in pairs(_table) do count = count + 1; end
+	
+	rand = math.random(1, count);
+	
+	for k,v in pairs(_table) do -- Invert table to get key.
+		_table[v]=k
+	end
+	
+	for k,v in pairs(_table) do
+		if type(k) == "string" then table.insert(stringTable, k); end
+	end
+	
+	return stringTable[rand]; 
+end
+
+
+--[[
 	Return the number of elements in a table.
 --]]
 function tableUtils.GetTableSize(_table)
