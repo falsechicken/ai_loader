@@ -55,6 +55,55 @@ function tableUtils.DoesTableContainValue(_value, _table)
 end
 
 --[[
+	Adds two tables together. Inserts all the key value pairs from the second table into the first.
+	Existing keys in the first that also appear in the second will be overwritten.
+--]]
+function tableUtils.AddTables(_table1, _table2)
+	for k, v in pairs(_table2) do 
+		_table1[k] = v;
+	end
+	
+	return _table1;
+end
+
+--[[
+	Join two tables together. Add the second table to the bottom of the first. Keys are ignored.
+--]]
+function tableUtils.JoinTables(_table1, _table2)
+	for k, v in pairs(_table2) do 
+		table.insert(_table1, v);
+	end
+	
+	return _table1;
+end
+
+--[[
+	Remove all keys from a table that are contained in the second table.
+--]]
+function tableUtils.RemoveDupeKeys(_dedupeTable, _sourceTable)
+	for dk, dv in pairs(_dedupeTable) do
+		for sk, sv in pairs(_sourceTable) do
+			if dk == sk then _dedupeTable[dk] = nil; end
+		end
+	end
+	
+	return _dedupeTable;
+end
+
+--[[
+	Remove all values from a table that are contained in the second table.
+--]]
+function tableUtils.RemoveDupeValues(_dedupeTable, _sourceTable)
+	for dk, dv in pairs(_dedupeTable) do
+		for sk, sv in pairs(_sourceTable) do
+			if dv == sv then _dedupeTable[dk] = nil; end
+		end
+	end
+	
+	return _dedupeTable;
+end
+
+--[[
 	Recursively print a table to the console.
 	Uses code from https://gist.github.com/stuby/5445834#file-rprint-lua
 --]]
