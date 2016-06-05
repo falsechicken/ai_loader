@@ -25,6 +25,12 @@ function permissions.HasPermission(_JID, _permission, _permissionTable)
 		
 		return false;	
 	else
+	
+		if _permissionTable["DEFAULT"] == nil then return false; end -- If default permission entry is not in table.
+		for k,v in pairs(_permissionTable["DEFAULT"]) do
+			if v == _permission then return true; end
+		end
+		
 		return false;
 	end
 end
